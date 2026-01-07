@@ -1,0 +1,205 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Dark Theme Default */
+  --bg-primary: #190019;
+  --bg-secondary: #2B124C;
+  --accent-primary: #522B5B;
+  --accent-secondary: #854F6C;
+  --text-primary: #FBE4D8;
+  --text-secondary: #DFB6B2;
+  --hover-overlay: rgba(255, 255, 255, 0.1);
+  --border-color: #522B5B;
+  
+  --success: #4caf50;
+  --error: #f44336;
+  --warning: #ff9800;
+  --bg-card: #2B124C;
+
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --bg-primary: #f8f0fc; /* Slightly adjusted F5EBFA */
+  --bg-secondary: #E7DBEF;
+  --accent-primary: #6E3482;
+  --accent-secondary: #A56ABD;
+  --text-primary: #49225B;
+  --text-secondary: #6E3482;
+  --hover-overlay: rgba(0, 0, 0, 0.05);
+  --border-color: #A56ABD;
+  --bg-card: #ffffff;
+
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--accent-secondary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  margin-top: 0;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--accent-primary);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.2s;
+}
+[data-theme='light'] button {
+    color: #fff;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+button:active {
+    transform: scale(0.98);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 90%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary); 
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary); 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary); 
+}
+
+/* Utility Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.text-center { text-align: center; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-4 { gap: 1rem; }
+.mt-4 { margin-top: 1rem; }
+.w-full { width: 100%; }
+
+/* Spinner */
+.spinner {
+  border: 4px solid var(--hover-overlay);
+  border-left-color: var(--accent-secondary);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+@keyframes spin { 
+    0% { transform: rotate(0deg); } 
+    100% { transform: rotate(360deg); } 
+}
+
+/* Mobile Helpers */
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* Scrollbar Helpers */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Animations */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+/* Product Card Hover */
+.product-card {
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.product-card:hover {
+  transform: scale(1.05); /* Slight zoom */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; /* Enhanced shadow */
+  z-index: 10;
+}
+
+/* Animations */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+/* Product Card Hover */
+.product-card {
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.product-card:hover {
+  transform: scale(1.05); /* Slight zoom */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; /* Enhanced shadow */
+  z-index: 10;
+}

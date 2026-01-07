@@ -1,0 +1,3 @@
+# PokeFy - Loja Híbrida
+
+Este projeto é uma loja interativa...
