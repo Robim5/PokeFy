@@ -1,9 +1,10 @@
+/* vars globais tema */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  /* Dark Theme Default */
+  /* tema dark por defeito */
   --bg-primary: #190019;
   --bg-secondary: #2B124C;
   --accent-primary: #522B5B;
@@ -21,6 +22,7 @@
   color-scheme: dark;
 }
 
+/* tema claro alternativa */
 [data-theme='light'] {
   --bg-primary: #f8f0fc; /* Slightly adjusted F5EBFA */
   --bg-secondary: #E7DBEF;
@@ -35,20 +37,23 @@
   color-scheme: light;
 }
 
+/* corpo app e transicoes suaves */
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-primary); /* bg pagina */
   color: var(--text-primary);
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* wrapper app flex container */
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* links com cor de accent */
 a {
   color: var(--accent-secondary);
   text-decoration: none;
@@ -57,15 +62,18 @@ a:hover {
   text-decoration: underline;
 }
 
+/* titulos cor primaria */
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
   margin-top: 0;
 }
 
+/* paragrafo spacing */
 p {
     margin-bottom: 1rem;
 }
 
+/* butao base estilo */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -78,6 +86,7 @@ button {
   cursor: pointer;
   transition: transform 0.1s, filter 0.2s;
 }
+/* butao em tema claro */
 [data-theme='light'] button {
     color: #fff;
 }
@@ -89,6 +98,7 @@ button:active {
     transform: scale(0.98);
 }
 
+/* container central responsivo */
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -96,7 +106,7 @@ button:active {
   width: 90%;
 }
 
-/* Scrollbar */
+/* barra scroll personalizada */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -111,16 +121,18 @@ button:active {
   background: var(--accent-secondary); 
 }
 
-/* Utility Animations */
+/* animacao fade */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* aplicar fade in */
 .fade-in {
     animation: fadeIn 0.5s ease-out forwards;
 }
 
+/* classes utilitarias uteis */
 .text-center { text-align: center; }
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
@@ -131,7 +143,7 @@ button:active {
 .mt-4 { margin-top: 1rem; }
 .w-full { width: 100%; }
 
-/* Spinner */
+/* spinner carregamento */
 .spinner {
   border: 4px solid var(--hover-overlay);
   border-left-color: var(--accent-secondary);
@@ -148,14 +160,14 @@ button:active {
     100% { transform: rotate(360deg); } 
 }
 
-/* Mobile Helpers */
+/* helpers mobile */
 @media (max-width: 768px) {
     .hide-mobile {
         display: none !important;
     }
 }
 
-/* Scrollbar Helpers */
+/* esconder scrollbar crossbrowser */
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
 }
@@ -164,7 +176,7 @@ button:active {
     scrollbar-width: none;  /* Firefox */
 }
 
-/* Animations */
+/* animacao scale */
 @keyframes scaleIn {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
@@ -174,32 +186,35 @@ button:active {
   animation: scaleIn 0.3s ease-out forwards;
 }
 
-/* Product Card Hover */
+/* efeito hover cartao produto */
 .product-card {
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .product-card:hover {
-  transform: scale(1.05); /* Slight zoom */
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; /* Enhanced shadow */
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
   z-index: 10;
 }
 
-/* Animations */
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+/* ajustes para mobile */
+@media (max-width: 768px) {
+  /* container principal mais compacto */
+  .container {
+    padding: 1rem;
+    width: 95%;
+  }
+
+  /* esconder elementos em mobile */
+  .hide-mobile {
+    display: none !important;
+  }
 }
 
-.scale-in {
-  animation: scaleIn 0.3s ease-out forwards;
+/* telemoveis pequenos */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+    width: 98%;
+  }
 }
 
-/* Product Card Hover */
-.product-card {
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.product-card:hover {
-  transform: scale(1.05); /* Slight zoom */
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; /* Enhanced shadow */
-  z-index: 10;
-}

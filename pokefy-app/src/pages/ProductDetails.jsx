@@ -23,8 +23,7 @@ const ProductDetails = () => {
         const all = await getPokemonProducts();
         found = all.find(p => p.id === id);
       } else {
-        // Fetch specific common product. Optimization: Fetch single from API if supported or find in list
-        // FakeStoreAPI supports /products/:id
+        // buscar produto comum especifico, usa id da fake store API
         try {
             const res = await fetch(`https://fakestoreapi.com/products/${id}`);
             const data = await res.json();
@@ -48,8 +47,8 @@ const ProductDetails = () => {
     load();
   }, [id, type]);
 
-  if (loading) return <div className="container text-center" style={{ marginTop: '4rem' }}>Carregando...</div>;
-  if (!product) return <div className="container text-center" style={{ marginTop: '4rem' }}>Produto não encontrado.</div>;
+  if (loading) return <div className="container text-center" style={{ marginTop: '4rem' }}>A Carregar</div>;
+  if (!product) return <div className="container text-center" style={{ marginTop: '4rem' }}>Produto nao foi encontrado</div>;
 
   const handleAdd = () => {
     addToCart(product, qty);
@@ -58,12 +57,12 @@ const ProductDetails = () => {
   return (
     <div className="container fade-in" style={{ marginTop: '2rem', display: 'flex', flexWrap: 'wrap', gap: '3rem', alignItems: 'flex-start' }}>
       
-      {/* Image */}
+      {/* imagem produto */}
       <div style={{ flex: '1 1 400px', backgroundColor: '#fff', borderRadius: '16px', padding: '2rem', display: 'flex', justifyContent: 'center' }}>
         <img src={product.image} alt={product.title} style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain' }} />
       </div>
 
-      {/* Details */}
+      {/* detalhes produto */}
       <div style={{ flex: '1 1 400px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <h1 style={{ fontSize: '2.5rem', margin: 0 }}>{product.title}</h1>
         
@@ -71,7 +70,7 @@ const ProductDetails = () => {
            <span style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--accent-secondary)' }}>€ {product.price.toFixed(2)}</span>
            {product.rating && (
              <div style={{ display: 'flex', alignItems: 'center', color: 'var(--warning)' }}>
-               <FaStar /> <span style={{ marginLeft: '0.5rem', color: 'var(--text-primary)' }}>{product.rating.rate} / 5 ({product.rating.count} reviews)</span>
+               <FaStar /> <span style={{ marginLeft: '0.5rem', color: 'var(--text-primary)' }}>{product.rating.rate} de 5 {product.rating.count} reviews</span>
              </div>
            )}
         </div>
@@ -82,11 +81,11 @@ const ProductDetails = () => {
 
         <div style={{ backgroundColor: 'var(--bg-secondary)', padding: '1.5rem', borderRadius: '12px' }}>
            <div style={{ marginBottom: '1rem' }}>
-             <strong>Disponibilidade:</strong> <span style={{ color: 'var(--success)' }}>Em Stock (Simulado)</span>
+             <strong>Disponibilidade</strong> <span style={{ color: 'var(--success)' }}>Em Stock Simulado</span>
            </div>
            
            <div style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-             <strong>Quantidade:</strong>
+             <strong>Quantidade</strong>
              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'var(--bg-primary)', padding: '0.5rem', borderRadius: '8px' }}>
                 <button onClick={() => setQty(q => Math.max(1, q - 1))} style={{ padding: '0.2rem 0.6rem' }}><FaMinus /></button>
                 <span style={{ minWidth: '30px', textAlign: 'center' }}>{qty}</span>
