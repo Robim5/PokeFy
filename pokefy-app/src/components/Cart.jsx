@@ -74,7 +74,7 @@ const Cart = ({ isOpen, onClose }) => {
               <span>Total</span>
               <span>€ {total.toFixed(2)}</span> {/* total */}
             </div>
-            <button style={{ width: '100%', marginTop: '1rem', padding: '1rem' }} onClick={() => alert('Checkout not implemented')}>
+            <button style={{ width: '100%', marginTop: '1rem', padding: '1rem' }} onClick={() => alert('Checkout não implementado.')}>
               Finalizar Compra
             </button> {/* checkout */}
             <button onClick={clearCart} style={{ width: '100%', marginTop: '0.5rem', background: 'transparent', border: '1px solid var(--error)', color: 'var(--error)' }}>
